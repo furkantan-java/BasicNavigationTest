@@ -1,6 +1,7 @@
 package com.cbt.utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.github.bonigarcia.wdm.WebDriverManagerException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -12,7 +13,7 @@ public class BrowserFactory {
 
     public static WebDriver getDriver(String browserName) {
         if (browserName.equalsIgnoreCase("chrome")) {
-            WebDriverManager.chromedriver().setup();
+            WebDriverManager.chromedriver().version("79").setup();
             return new ChromeDriver();
         } else if (browserName.equalsIgnoreCase("firefox")) {
             WebDriverManager.firefoxdriver().setup();
@@ -26,8 +27,8 @@ public class BrowserFactory {
         } else if (browserName.equalsIgnoreCase("safari")) {
             return null;
         } else {
-            WebDriverManager.iedriver().setup();
-            return new InternetExplorerDriver();
+            throw new WebDriverManagerException("Unknown Browser");
+            //return null;
         }
 
     }

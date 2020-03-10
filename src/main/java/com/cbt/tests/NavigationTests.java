@@ -22,7 +22,9 @@ public class NavigationTests {
         StringUtility.verifyEquals(title2, title4);
 
         driver.quit();
+
     }
+
 
     public static void firefoxTest() {
         driver = BrowserFactory.getDriver("firefox");
